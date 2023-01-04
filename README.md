@@ -1,8 +1,8 @@
 # Pikchr for Go
 
 This package wraps [Pikchr](https://pikchr.org) as a Go package. It doesn't rely
-on cgo, instead using the [wazero](https://wazero.io/) WebAssembly runtime to
-run Pikchr.
+on cgo or an external binary, instead using the [wazero](https://wazero.io/)
+WebAssembly runtime to embed Pikchr.
 
 Wazero is configured to sandbox Pikchr such that Pikchr only has access to the
 input and output data.
