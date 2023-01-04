@@ -33,3 +33,9 @@ Next build Pikchr:
 export WASI_SDK_PATH=/path/to/wasi/sdk
 $WASI_SDK_PATH/bin/clang pikchr.c -o pikchr.wasm -DPIKCHR_SHELL -Os -DNDEBUG -s
 ```
+
+## Acknowledgements
+
+I got the idea for this approach of embedding an external program in Go using
+WebAssembly from the blog post [The carcinization of Go
+programs](https://xeiaso.net/blog/carcinization-golang).
