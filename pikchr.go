@@ -23,20 +23,12 @@ func Render(in io.Reader, out io.Writer) error {
 
 	wasi_snapshot_preview1.MustInstantiate(ctx, r)
 
-	code, err := r.CompileModule(ctx, pikchrWasm)
-	if err != nil {
-		return err
-	}
-
 	// Only stdin and stdout is exposed to the WASM module
 	config := wazero.NewModuleConfig().WithStdout(out).WithStdin(in).WithArgs("pikchr", "--svg-only", "-")
 
-	_, err = r.InstantiateModule(ctx, code, config)
-	if err != nil {
-		return err
-	}
+	_, err := r.InstantiateWithConfig(ctx, pikchrWasm, config)
 
-	return nil
+	return err
 }
 
 // RenderString converts input Pikchr figure into output SVG figure.
